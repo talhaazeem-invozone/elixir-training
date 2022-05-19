@@ -1,4 +1,8 @@
-<h1>Hello, This is a live route</h1>
-<div>
-    <%= live_component @socket, PracLiveWeb.CounterComponent, id: :counter  %>
-</div>
+<h1>Hello, This is a live route</h1> 
+<button phx-click="counter" >Counter</button>
+
+<%= if @counter do %>
+    <div>
+        <%= live_component @socket, PracLiveWeb.CounterComponent, id: :counter  %>
+    </div>
+<% end %>

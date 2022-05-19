@@ -1,0 +1,23 @@
+<div>
+    <h1><%= @page_title %></h1>
+
+    <.form
+        let={f}
+        for={@changeset}
+        id="games-form"
+        phx-target={@myself}
+        phx-change="validate"
+        phx-submit="save">
+
+        <div>
+            <p>Name </p>
+            <%= text_input f, :name, class: "input input-bordered" %> 
+            <h2> <%= error_tag f, :name %> </h2>        
+        </div> 
+
+        <div >
+            <div> <button type="submit" class="btn">Save</button></div>
+            <div class="btn" phx-click="cancel">Cancel</div>
+        </div>
+    </.form>
+</div>

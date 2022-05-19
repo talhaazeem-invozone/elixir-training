@@ -1,0 +1,36 @@
+<%= if @live_action in [:new, :edit] do %>
+    <%= live_modal @socket, PracLiveWeb.GameLive.FormComponent,
+    id: @game.id || :new,
+    page_title: @page_title,
+    action: @live_action,
+    game: @game,
+    return_to: Routes.game_index_path(@socket, :index)
+    %>
+<% end %>
+
+<button phx-click="new">Add new game</button>
+<button phx-click="to_rating">Ratings</button>
+<table class="table w-full">
+    <thead>
+        <tr>
+            <th>
+                <span>
+                    Name
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for game <- @games do %>
+            <tr>
+                <td>
+                    <h4><%= game.name %></h4>
+                </td>
+                <td>
+                    <%= link "Edit", to: "#", phx_click: "edit", phx_value_id: game.id %> |
+                    <%= link "Delete", to: "#", phx_click: "delete", phx_value_id: game.id %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
